@@ -33,7 +33,7 @@ To use the `chapa_unofficial` package, follow these steps:
 import 'package:chapa_unofficial/chapa_unofficial.dart';
 ```
 
-2. Configure Chapa by calling the configure method with your private key:
+2. Configure Chapa by calling the configure method with your private key: (Found in https://dashboard.chapa.co/dashboard/profile/profile > API > Secrete Key ) 
 
 ```dart
 Chapa.configure(privateKey: 'YOUR_PRIVATE_KEY');
@@ -45,6 +45,17 @@ void main() {
   // setup chapa 
   Chapa.configure(privateKey: "CHASECK_TEST-HlZh7Xo8vNvT2jm6j08OzcnFnB63Yauf");
   runApp(const MyApp());
+}
+
+If your Payment processing section is not found in a main section make sure Chapa is initialised in initState() , for example for statfulWidget of widget _PricingPageState . 
+class _PricingPageState extends State<PricingPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    Chapa.configure(privateKey: "CHASECK_TEST-HlZh7Xo8vNvT2jm6j08OzcnFnB63Yauf");
+    super.initState();
+  }
+ ...
 }
 
 ```
